@@ -23,10 +23,6 @@ print(f"Length of the dataset: {len(data)}")
 # Check for missing values 
 print(data.isnull().sum())
 """
-1. Create a function to clean the data 
- a. For malware indicators, replace NaN with 'No Malware Indicators'
- b. For alerts/warnings, replace NaN with 'Warning'
- c. For proxy information, if Destination IP Address is a private IP address, replace with NaN, all others replace with 'No Proxy Information'
  
 Missing values in the dataset 
 Timestamp                     0
@@ -60,6 +56,9 @@ print(data.head())  # Display the first few rows of the dataset
 
 #Clean the data before plotting
 data, events_per_month = clean_data(data)
+
+# Check for missing values 
+print(data.isnull().sum())
 
 #Plot the number of cyber attacks per month
 plot_monthly_events(events_per_month)
