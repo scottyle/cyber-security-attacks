@@ -1,14 +1,14 @@
 import pandas as pd 
 import numpy as np
 from graphs.graphs import plot_monthly_events, plot_number_of_attacks
+from graphs.regression import linear_regression_trend_analysis, multivariate_linear_regression_analysis, multivariate_linear_regression_analysis_2_variables
 from scripts.clean import clean_data
 
 """
 Hypothesis of the dataset: 
 1. A majority of cybersecurity attacks are DDos attacks. 
-2. A majority of the attacks are located outside of the US specifically in Asia and then Europe. 
-3. For malware attacks, these attacks are more common outside of the environment. 
-4. There is a raise of attacks in the last 5 years. 
+2. There is a raise of attacks in the last 5 years. 
+3. Predict the number of cyber attacks per month over time using time-based trend analysis (linear regression)
 """
 
 # Load the dataset 
@@ -57,7 +57,7 @@ print(data.head())  # Display the first few rows of the dataset
 #Clean the data before plotting
 data, events_per_month = clean_data(data)
 
-# Check for missing values 
+# Check for missing values again to ensure cleaning was successful
 print(data.isnull().sum())
 
 #Plot the number of cyber attacks per month
@@ -66,3 +66,10 @@ plot_monthly_events(events_per_month)
 # Plot the number of attacks by type
 plot_number_of_attacks(data)
 
+# Plot the simple linear regression trend analysis
+linear_regression_trend_analysis(data)
+
+# Plot the multivariate linear regression analysis
+multivariate_linear_regression_analysis(data)
+
+multivariate_linear_regression_analysis_2_variables(data)
